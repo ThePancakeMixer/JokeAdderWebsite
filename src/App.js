@@ -20,16 +20,19 @@ class App extends Component {
 
   handleSubmit(event) {
     alert("Attempting post");
-    fetch("http://localhost:3009", {
+    fetch("http://192.168.86.25:3009", {
+
+        headers:{ "Content-Type" : "application/json"},
         method: "POST",
         //make sure to serialize your JSON body
-        body: {
-          joke:"HYAHAHHA",
-        },
+        body: JSON.stringify({
+          joke:this.state.value,
+        }),
+
 
     })
     .then( (response) => { 
-       console.log(response);
+       console.log("joke logged");
     });
     
     event.preventDefault();
